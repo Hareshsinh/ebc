@@ -45,7 +45,7 @@ class EBusinessCardController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create(Request $request)
+    public function create()
     {
         try {
             $submit = 'Generate';
@@ -80,6 +80,23 @@ class EBusinessCardController extends Controller
         try {
             $ebusinesscard = EBusinessCard::where('slug',$slug)->first();
             $submit = 'Update';
+            return view('ebusinesscard.app', compact('ebusinesscard', 'submit'));
+        } catch (\Exception $exception){
+            Log::error($exception->getMessage());
+            redirect()->back()->with('error',$exception->getMessage());
+        }
+    }
+
+
+    /**
+     * @param $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show($slug)
+    {
+        try {
+            $ebusinesscard = EBusinessCard::where('slug',$slug)->first();
+            $submit = 'show';
             return view('ebusinesscard.app', compact('ebusinesscard', 'submit'));
         } catch (\Exception $exception){
             Log::error($exception->getMessage());

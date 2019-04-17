@@ -1,2 +1,4 @@
 <?php
-Route::resource('/ebusinesscard', 'vcian\ebusinesscard\EBusinessCardController');
+Route::group(['middleware' => 'web'], function () {
+    Route::resource('ebusinesscard', 'vcian\ebusinesscard\EBusinessCardController');
+});

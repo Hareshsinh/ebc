@@ -5,9 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Ecard Infomration</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <!------ Include the above in your HEAD tag ---------->
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+
 </head>
 <body>
+<div class="top-bg">
+    <div class="container">
+        <a href="/ebusinesscard/create" class="btn btn-info add-new"><i class="fa fa-plus"></i> &nbsp;NEW</a>
+        <h2>Users <b>Details</b></h2>
+    </div>
+</div>
 <div class="container">
     @if (isset($success) && !empty($success))
         <div class="alert alert-success alert-block">
@@ -18,12 +27,6 @@
     <div class="table-wrapper">
         <div class="table-title">
             <div class="row">
-                <div class="col-sm-10">
-                    <h2>Users <b>Details</b></h2>
-                </div>
-                <div class="col-sm-2">
-                    <a href="/ebusinesscard/create" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</a>
-                </div>
                 <div class="col-sm-12">
                         <table class="table table-bordered">
                             <thead>
@@ -46,14 +49,14 @@
                                     <td>{{ $user->zipcode }}</td>
                                     <td>
                                         <div style="display: flex;">
-                                            <a href="/ebusinesscard/{{ $user->slug }}/edit" class="btn btn-primary" style="margin-right: 10px">Edit</a>
-
+                                            <a href="/ebusinesscard/{{ $user->slug }}/edit" class="btn btn-primary"><i class="fa fa-edit"></i></a>&nbsp;
                                             <form class="delete" action="/ebusinesscard/{{ $user->slug }}" onclick="return confirm('Are you sure want to delete this card?')" method="POST">
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 {{ csrf_field() }}
-                                                <input type="submit" class="btn btn-danger pull-right" value="Delete">
+                                                <button type="submit" class="btn btn-danger pull-right"><i class="fa fa-trash-o"></i></button>
+                                                {{--<input type="submit" class="btn btn-danger pull-right" value="">--}}
                                             </form>
-
+                                            <i class="fa fa-trash"></i>
                                         </div>
                                 </td>
                             </tr>
@@ -65,5 +68,6 @@
             </div>
         </div>
 </div>
+        <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </body>
 </html>
