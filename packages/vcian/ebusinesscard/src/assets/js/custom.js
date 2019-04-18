@@ -39,7 +39,6 @@ $(document).ready(function () {
 
 //jquery validator
     jQuery.validator.setDefaults({
-        debug: true,
         success: "valid"
     });
     $('[data-toggle="tooltip"]').tooltip();
@@ -69,10 +68,6 @@ $(document).ready(function () {
             blog : { maxlength :255 , minlength :2 },
             meetup : { maxlength :255 , minlength :2 },
             pinterest : { maxlength :255 , minlength :2 },
-        },
-        submitHandler: function (form) { // for demo
-            alert('valid form submitted'); // for demo
-            return false; // for demo
         }
     });
 

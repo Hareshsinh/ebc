@@ -38,23 +38,23 @@ class EBusinessCardRepository extends BaseRepository
         $zipcode = ($request['zipcode']) ?? '';
         $country = ($request['country']) ?? '';
         $perPage = ($request['perPage']) ?? 10;
-        $eBusinessCardDates = $this->model->where('status','active');
+        $eBusinessCardDates = $this->model->where('status', 'active');
 
-        if($name)
-            $eBusinessCardDates->where('name','like','%$name%');
+        if ($name)
+            $eBusinessCardDates->where('name', 'like', '%$name%');
 
-        if($phone)
-            $eBusinessCardDates->where('phone','like','%$phone%');
+        if ($phone)
+            $eBusinessCardDates->where('phone', 'like', '%$phone%');
 
-        if($email)
-            $eBusinessCardDates->where('email','like','%$email%');
-        if($zipcode)
-            $eBusinessCardDates->where('zipcode','like','%$zipcode%');
+        if ($email)
+            $eBusinessCardDates->where('email', 'like', '%$email%');
+        if ($zipcode)
+            $eBusinessCardDates->where('zipcode', 'like', '%$zipcode%');
 
-        if($country)
-            $eBusinessCardDates->where('country','like','%$country%');
+        if ($country)
+            $eBusinessCardDates->where('country', 'like', '%$country%');
 
-        $eBusinessCardDates->orderBy($sortBy , $sortType);
+        $eBusinessCardDates->orderBy($sortBy, $sortType);
         return $eBusinessCardDates->paginate($perPage);
     }
 
@@ -68,33 +68,33 @@ class EBusinessCardRepository extends BaseRepository
         try {
             DB::beginTransaction();
             $input = $request->all();
-            $profile  = ($request->file('profile')) ?? null;
-            $background  = ($request->file('background')) ?? null;
-            if($profile){
-                $request->profile = time().'.'.$profile->getClientOriginalExtension();
-                if(!File::exists($destinationPath = public_path('/ebcuploads/profile'))) {
+            $profile = ($request->file('profile')) ?? null;
+            $background = ($request->file('background')) ?? null;
+            if ($profile) {
+                $request->profile = time() . '.' . $profile->getClientOriginalExtension();
+                if (!File::exists($destinationPath = public_path('/ebcuploads/profile'))) {
                     File::makeDirectory($destinationPath, 0777, true, true);
                 }
                 $profile->move($destinationPath, $request->profile);
             }
 
-            if($background){
-                $request->background = time().'.'.$background->getClientOriginalExtension();
-                if(!File::exists($destinationPath = public_path('/ebcuploads/background'))) {
+            if ($background) {
+                $request->background = time() . '.' . $background->getClientOriginalExtension();
+                if (!File::exists($destinationPath = public_path('/ebcuploads/background'))) {
                     File::makeDirectory($destinationPath, 0777, true, true);
                 }
                 $background->move($destinationPath, $request->background);
             }
             $input['profile'] = $request->profile;
-            $input['slug'] = \Str::slug($request->name,'-');
+            $input['slug'] = \Str::slug($request->name, '-');
             $input['background'] = $request->background;
-            if($this->model->create($input)){
+            if ($this->model->create($input)) {
                 DB::commit();
                 return true;
             }
             DB::rollBack();
             return false;
-        } catch (\Exception $exception){
+        } catch (\Exception $exception) {
             Log::error($exception->getMessage());
             return false;
         }
@@ -113,29 +113,29 @@ class EBusinessCardRepository extends BaseRepository
             DB::beginTransaction();
             $input = $request->all();
             $ebusinesscard = $this->model->findOrFail($slug);
-            $profile  = ($request->file('profile')) ?? null;
-            $background  = ($request->file('background')) ?? null;
-            if($profile){
-                $request->profile = time().'.'.$profile->getClientOriginalExtension();
-                if(!\File::exists($destinationPath = public_path('/ebcuploads/profile'))) {
+            $profile = ($request->file('profile')) ?? null;
+            $background = ($request->file('background')) ?? null;
+            if ($profile) {
+                $request->profile = time() . '.' . $profile->getClientOriginalExtension();
+                if (!\File::exists($destinationPath = public_path('/ebcuploads/profile'))) {
                     \File::makeDirectory($destinationPath, 0777, true, true);
                 }
-                if($profile->move($destinationPath, $request->profile)){
-                    if(File::exists(public_path('/ebcuploads/profile/'.$ebusinesscard->profile))) {
-                        File::delete(public_path('/ebcuploads/profile/'.$ebusinesscard->profile));
+                if ($profile->move($destinationPath, $request->profile)) {
+                    if (File::exists(public_path('/ebcuploads/profile/' . $ebusinesscard->profile))) {
+                        File::delete(public_path('/ebcuploads/profile/' . $ebusinesscard->profile));
                     }
                 }
                 $input['profile'] = $request->profile;
             }
 
-            if($background){
-                $request->background = time().'.'.$background->getClientOriginalExtension();
-                if(!File::exists($destinationPath = public_path('/ebcuploads/background'))) {
+            if ($background) {
+                $request->background = time() . '.' . $background->getClientOriginalExtension();
+                if (!File::exists($destinationPath = public_path('/ebcuploads/background'))) {
                     File::makeDirectory($destinationPath, 0777, true, true);
                 }
-                if($background->move($destinationPath, $request->background)){
-                    if(File::exists(public_path('/ebcuploads/background/'.$ebusinesscard->background))) {
-                       File::delete(public_path('/ebcuploads/background/'.$ebusinesscard->background));
+                if ($background->move($destinationPath, $request->background)) {
+                    if (File::exists(public_path('/ebcuploads/background/' . $ebusinesscard->background))) {
+                        File::delete(public_path('/ebcuploads/background/' . $ebusinesscard->background));
                     }
                 }
                 $input['background'] = $request->background;
@@ -143,12 +143,12 @@ class EBusinessCardRepository extends BaseRepository
 
             if ($ebusinesscard->update($input)) {
                 DB::commit();
-               return true;
+                return true;
             } else {
                 DB::rollBack();
                 return false;
             }
-        } catch (\Exception $exception){
+        } catch (\Exception $exception) {
             Log::error($exception->getMessage());
             return false;
         }
@@ -163,12 +163,12 @@ class EBusinessCardRepository extends BaseRepository
     {
         try {
             DB::beginTransaction();
-            $ebusinesscard = $this->model->where('slug',$slug)->first();
-            if(File::exists(public_path('/ebcuploads/profile/'.$ebusinesscard->profile))) {
+            $ebusinesscard = $this->model->where('slug', $slug)->first();
+            if (File::exists(public_path('/ebcuploads/profile/' . $ebusinesscard->profile))) {
                 File::delete(public_path('/ebcuploads/profile/' . $ebusinesscard->profile));
             }
-            if(File::exists(public_path('/ebcuploads/background/'.$ebusinesscard->background))) {
-                File::delete(public_path('/ebcuploads/background/'.$ebusinesscard->background));
+            if (File::exists(public_path('/ebcuploads/background/' . $ebusinesscard->background))) {
+                File::delete(public_path('/ebcuploads/background/' . $ebusinesscard->background));
             }
 
             if ($ebusinesscard->delete()) {
@@ -178,7 +178,7 @@ class EBusinessCardRepository extends BaseRepository
                 DB::rollBack();
                 return false;
             }
-        } catch (\Exception $exception){
+        } catch (\Exception $exception) {
             Log::error($exception->getMessage());
             return false;
         }

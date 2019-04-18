@@ -32,12 +32,12 @@ class EBusinessCardController extends Controller
      */
     public function index(Request $request)
     {
-        try{
+        try {
             $ebusinesscard = $this->eBusinessCardRepository->getEbusinessCards($request->all());
             return view('ebusinesscard.list', compact('ebusinesscard'));
-        } catch (\Exception $exception){
+        } catch (\Exception $exception) {
             Log::error($exception->getMessage());
-            redirect()->back()->with('error',$exception->getMessage());
+            redirect()->back()->with('error', $exception->getMessage());
         }
     }
 
@@ -49,10 +49,11 @@ class EBusinessCardController extends Controller
     {
         try {
             $submit = 'Generate';
-            return view('ebusinesscard.app',compact( 'submit'));
-        } catch (\Exception $exception){
+            $message = 'Add new';
+            return view('ebusinesscard.app', compact('submit', 'message'));
+        } catch (\Exception $exception) {
             Log::error($exception->getMessage());
-            redirect()->back()->with('error',$exception->getMessage());
+            redirect()->back()->with('error', $exception->getMessage());
         }
     }
 
@@ -64,10 +65,10 @@ class EBusinessCardController extends Controller
     {
         try {
             $this->eBusinessCardRepository->setEBusinessCard($request);
-            return redirect('ebusinesscard')->with('success','Card generate successfully!');
-        } catch (\Exception $exception){
+            return redirect('ebusinesscard')->with('success', 'Card generate successfully!');
+        } catch (\Exception $exception) {
             Log::error($exception->getMessage());
-            redirect('ebusinesscard')->back()->with('error',$exception->getMessage());
+            redirect('ebusinesscard')->back()->with('error', $exception->getMessage());
         }
     }
 
@@ -78,12 +79,13 @@ class EBusinessCardController extends Controller
     public function edit($slug)
     {
         try {
-            $ebusinesscard = EBusinessCard::where('slug',$slug)->first();
+            $ebusinesscard = EBusinessCard::where('slug', $slug)->first();
             $submit = 'Update';
-            return view('ebusinesscard.app', compact('ebusinesscard', 'submit'));
-        } catch (\Exception $exception){
+            $message = 'Update';
+            return view('ebusinesscard.app', compact('ebusinesscard', 'submit', 'message'));
+        } catch (\Exception $exception) {
             Log::error($exception->getMessage());
-            redirect()->back()->with('error',$exception->getMessage());
+            redirect()->back()->with('error', $exception->getMessage());
         }
     }
 
@@ -95,12 +97,13 @@ class EBusinessCardController extends Controller
     public function show($slug)
     {
         try {
-            $ebusinesscard = EBusinessCard::where('slug',$slug)->first();
-            $submit = 'show';
-            return view('ebusinesscard.app', compact('ebusinesscard', 'submit'));
-        } catch (\Exception $exception){
+            $ebusinesscard = EBusinessCard::where('slug', $slug)->first();
+            $submit = 'view';
+            $message = 'View';
+            return view('ebusinesscard.app', compact('ebusinesscard', 'submit', 'message'));
+        } catch (\Exception $exception) {
             Log::error($exception->getMessage());
-            redirect()->back()->with('error',$exception->getMessage());
+            redirect()->back()->with('error', $exception->getMessage());
         }
     }
 
@@ -112,11 +115,11 @@ class EBusinessCardController extends Controller
     public function update($slug, Request $request)
     {
         try {
-            $this->eBusinessCardRepository->updateEBusinessCard($slug,$request);
+            $this->eBusinessCardRepository->updateEBusinessCard($slug, $request);
             return redirect('ebusinesscard');
-        } catch (\Exception $exception){
+        } catch (\Exception $exception) {
             Log::error($exception->getMessage());
-            redirect()->back()->with('error',$exception->getMessage());
+            redirect()->back()->with('error', $exception->getMessage());
         }
     }
 
@@ -129,9 +132,9 @@ class EBusinessCardController extends Controller
         try {
             $this->eBusinessCardRepository->deleteEBusinessCard($slug);
             return redirect('ebusinesscard');
-        } catch (\Exception $exception){
+        } catch (\Exception $exception) {
             Log::error($exception->getMessage());
-            redirect()->back()->with('error',$exception->getMessage());
+            redirect()->back()->with('error', $exception->getMessage());
         }
     }
 }
