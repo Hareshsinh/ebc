@@ -124,7 +124,7 @@
                         <div class="skype_name-icon"><i class="glyphicon glyphicon-comment" data-icon="skype_name"
                                                         title="skype name" data-toggle="tooltip"></i><span
                                     id='skype_name'></span><br/></div>
-                        <div class="designation-icon"><i class="glyphicon glyphicon-gift organisation-icon"
+                        <div class="organisation-icon"><i class="glyphicon glyphicon-gift organisation-icon"
                                                          title="organisation" data-toggle="tooltip"></i><span
                                     id='organisation'></span></div>
                         <div class="about-icon"><i class="glyphicon glyphicon-info-sign" data-icon="about" title="about"

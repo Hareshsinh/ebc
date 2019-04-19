@@ -2,6 +2,7 @@
 
 namespace Vcian\EbusinessCard;
 
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Log;
@@ -132,6 +133,30 @@ class EBusinessCardController extends Controller
         try {
             $this->eBusinessCardRepository->deleteEBusinessCard($slug);
             return redirect('ebusinesscard');
+        } catch (\Exception $exception) {
+            Log::error($exception->getMessage());
+            redirect()->back()->with('error', $exception->getMessage());
+        }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function generatePDF($slug)
+    {
+        try {
+            $ebusinesscard = EBusinessCard::where('slug', $slug)->first();
+            if($ebusinesscard->background!=''){
+                $ebusinesscard->backgroundPath =     asset('ebcuploads/background/'.$ebusinesscard->background);
+            } else {
+                $ebusinesscard->backgroundPath =  asset("images/social/background.jpeg");
+            }
+            $data['ebusinesscard'] = $ebusinesscard;
+//            return view('ebusinesscard.cardPDF', $data);
+            $pdf = PDF::loadView('ebusinesscard.cardPDF',$data);
+            return $pdf->stream('itsolutionstuff.pdf');
         } catch (\Exception $exception) {
             Log::error($exception->getMessage());
             redirect()->back()->with('error', $exception->getMessage());
