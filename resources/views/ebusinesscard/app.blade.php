@@ -93,7 +93,7 @@
                                                 src="{{ asset('images/social') }}/foursquare.svg" width="32" height="32"
                                                 title="Foursquare"
                                                 data-alt-src="{{ asset('ebcuploads/social') }}/foursquare.png"></a></li>
-                                <li><a href="#" class="wordpress social" href="" target="_blank"><img
+                                <li><a href="#" class="blog social" href="" target="_blank"><img
                                                 src="{{ asset('images/social') }}/wordpress.svg" width="32" height="32"
                                                 title="Blog"
                                                 data-alt-src="{{ asset('ebcuploads/social') }}/wordpress.png"></a></li>

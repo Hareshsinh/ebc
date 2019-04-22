@@ -3,7 +3,7 @@
 <head>
     <title>E Business Card</title>
 
-    <style type="text/css">
+    <style type="text/css" media="all">
 
         br {
             clear: both
@@ -24,6 +24,7 @@
         .location {
             color: #fff;
             padding-bottom: 10px;
+            padding-right: 15px;
         }
 
         .card:hover {
@@ -62,7 +63,8 @@
             font-size: 0;
             position: relative;
             vertical-align: middle;
-            white-space: nowrap
+            white-space: nowrap;
+            padding-top: 11px;
         }
 
         .mobile-social-share ul {
@@ -87,7 +89,19 @@
         }
 
         .dropdown-menu {
-            min-width: 0
+            min-width: 0;
+            display: inline-block;
+            padding: 0;
+            alignment: center;
+            background: #f00;
+            margin: 0 auto;
+            width: 90%;
+        }
+
+        .dropdown-menu li {
+            display: inline-block;
+            margin-right: 0;
+            float: none;
         }
 
         .leave-top-space {
@@ -97,12 +111,16 @@
 
         .right-side-box {
             width: 300px;
+            vertical-align: top;
         }
 
         .right-side-box h4 {
             font-size: 18px;
             padding: 0;
             line-height: 18px;
+            height: 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
 
         .person-photo {
@@ -114,6 +132,7 @@
             display: table;
             position: relative;
             margin: 10px 0 10px 0px;
+            border: 2px solid #fff;
         }
 
         .right-card {
@@ -178,7 +197,7 @@
         }
 
         .designation-icon {
-            padding-bottom: 10px;
+            padding-bottom: 5px;
         }
 
         .icon {
@@ -192,216 +211,250 @@
 
         .email-icon {
             line-height: 16px;
+            height: 25px;
+        }
+
+        .email-icon img {
+            float: left;
+            padding-bottom: 0px;
+            margin-bottom: 0;
+        }
+
+        .btn-group ul {
+            padding: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn-group ul li {
+            text-align: center;
+            width: 32px;
+            display: inline;
+            margin-right: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="right-card">
-        <div class="well-card">
-            <div class="well well-sm">
-                <div class="background img-responsive card">
-                    <div class="black-bg"></div>
-                    <table style="position: relative; z-index: 9;">
-                        <tr>
-                            <td class="leave-top-space" align="top">
-                                <div style="position: relative; z-index: 2;">
-                                    <div class="person-photo">
-                                        <div class="main-img">
-                                            @if(isset($ebusinesscard) && (isset($ebusinesscard->profile) && $ebusinesscard->profile!=''))
-                                                <img class="profile img-thumbnail" title="profile image"
-                                                     src="{{ asset('ebcuploads/profile/'.$ebusinesscard->profile) }}"
-                                                     height="150" width="150" alt="Avatar">
-                                            @else
-                                                <img class="profile img-thumbnail" title="profile image"
-                                                     src="{{ asset('images/social/avatar.png') }}" height="150"
-                                                     width="150" alt="Avatar">
-                                            @endif
-                                        </div>
+<div class="right-card">
+    <div class="well-card">
+        <div class="well well-sm">
+            <div class="background img-responsive card">
+                <div class="black-bg"></div>
+                <table style="position: relative; z-index: 9;">
+                    <tr>
+                        <td class="leave-top-space" align="top">
+                            <div style="position: relative; z-index: 2;">
+                                <div class="person-photo">
+                                    <div class="main-img">
+                                        @if(isset($ebusinesscard) && (isset($ebusinesscard->profile) && $ebusinesscard->profile!=''))
+                                            <img class="profile img-thumbnail" title="profile image"
+                                                 src="{{ asset('ebcuploads/profile/'.$ebusinesscard->profile) }}"
+                                                 height="150" width="150" alt="Avatar">
+                                        @else
+                                            <img class="profile img-thumbnail" title="profile image"
+                                                 src="{{ asset('images/social/avatar.png') }}" height="150"
+                                                 width="150" alt="Avatar">
+                                        @endif
                                     </div>
-                                    @if(isset($ebusinesscard->designation) && $ebusinesscard->designation!='')
-                                        <div class="designation-icon">
-                                            <img class="icon" src="{{ asset('images/icon/brifcase.svg') }}" height="16">
-                                            <span>{{ $ebusinesscard->designation }}</span>
-                                        </div>
-                                    @endif
-                                    @if(isset($ebusinesscard->phone) && $ebusinesscard->phone!='')
-                                        <div class="designation-icon">
-                                            <img class="icon" src="{{ asset('images/icon/phone.svg') }}" height="16">
-                                            <span>{{ $ebusinesscard->phone }}</span><br/>
-                                        </div>
-                                    @endif
                                 </div>
-                            </td>
-                            <td class="right-side-box" align="top">
-                                <h4>{{ $ebusinesscard->name }}</h4>
-                                <div style="position: relative; z-index: 2;">
-                                    <!-- Split button -->
-                                    <small class="location">
-                                        <cite title="Location">
-                                            @if(isset($ebusinesscard->street) && $ebusinesscard->street!='')
-                                                <span class="street-icon">{{ $ebusinesscard->street }}</span>
-                                            @endif
-                                            @if(isset($ebusinesscard->city) && $ebusinesscard->city!='')
-                                                <span class="city-icon">{{ $ebusinesscard->city }}</span>
-                                            @endif
-                                            @if(isset($ebusinesscard->state) && $ebusinesscard->state!='')
-                                                <span class="state-icon">{{ $ebusinesscard->state }}</span>
-                                            @endif
-                                            @if(isset($ebusinesscard->country) && $ebusinesscard->country!='')
-                                                <span class="country-icon">{{ $ebusinesscard->country }}</span>
-                                            @endif
-                                            <span>{{ $ebusinesscard->pincode }}</span><img class="icon"
-                                                                                           src="{{ asset('images/icon/map-icon.svg') }}"
-                                                                                           height="16">
-                                        </cite>
-                                    </small>
-                                    @if(isset($ebusinesscard->email) && $ebusinesscard->email!='')
-                                        <div class="email-icon">
-                                            <img class="icon" src="{{ asset('images/icon/email.svg') }}" height="16">
-                                            <span>{{ $ebusinesscard->email }}</span><br/>
-                                        </div>
-                                    @endif
-                                    @if(isset($ebusinesscard->website) && $ebusinesscard->website!='')
-                                        <div class="email-icon">
-                                            <img class="icon" src="{{ asset('images/icon/globe.svg') }}" height="16">
-                                            <span>{{ $ebusinesscard->website }}</span><br/>
-                                        </div>
-                                    @endif
-                                    @if(isset($ebusinesscard->skype_name) && $ebusinesscard->skype_name!='')
-                                        <div class="email-icon">
-                                            <img class="icon" src="{{ asset('images/icon/skype.svg') }}" height="16">
-                                            <span>{{ $ebusinesscard->skype_name }}</span><br/>
+                                @if(isset($ebusinesscard->designation) && $ebusinesscard->designation!='')
+                                    <div class="designation-icon">
+                                        <img class="icon" src="{{ asset('images/icon/brifcase.svg') }}" height="16">
+                                        <span>{{ $ebusinesscard->designation }}</span>
+                                    </div>
+                                @endif
+                                @if(isset($ebusinesscard->phone) && $ebusinesscard->phone!='')
+                                    <div class="designation-icon">
+                                        <img class="icon" src="{{ asset('images/icon/phone.svg') }}" height="16">
+                                        <span><a style="color: white"
+                                                 href="tel:{{ $ebusinesscard->phone }}">{{ $ebusinesscard->phone }}</a></span><br/>
+                                    </div>
+                                @endif
+                            </div>
+                        </td>
+                        <td class="right-side-box" align="top">
+                            <h4>{{ $ebusinesscard->name }}</h4>
+                            <div style="position: relative; z-index: 2;">
+                                <!-- Split button -->
+                                <small class="location">
+                                    <cite title="Location">
+                                        @if(isset($ebusinesscard->street) && $ebusinesscard->street!='')
+                                            <span class="street-icon">{{ $ebusinesscard->street }}</span>
+                                        @endif
+                                        @if(isset($ebusinesscard->city) && $ebusinesscard->city!='')
+                                            <span class="city-icon">{{ $ebusinesscard->city }}</span>
+                                        @endif
+                                        @if(isset($ebusinesscard->state) && $ebusinesscard->state!='')
+                                            <span class="state-icon">{{ $ebusinesscard->state }}</span>
+                                        @endif
+                                        @if(isset($ebusinesscard->country) && $ebusinesscard->country!='')
+                                            <span class="country-icon">{{ $ebusinesscard->country }}</span>
+                                        @endif
+                                        <span>{{ $ebusinesscard->pincode }}</span><img class="icon"
+                                                                                       src="{{ asset('images/icon/map-icon.svg') }}"
+                                                                                       height="16">
+                                    </cite>
+                                </small>
+                                @if(isset($ebusinesscard->email) && $ebusinesscard->email!='')
+                                    <div class="email-icon">
+                                        <img class="icon" src="{{ asset('images/icon/email.svg') }}" height="16">
+                                        <span>{{ $ebusinesscard->email }}</span><br/>
+                                    </div>
+                                @endif
+                                @if(isset($ebusinesscard->website) && $ebusinesscard->website!='')
+                                    <div class="email-icon">
+                                        <img class="icon" src="{{ asset('images/icon/globe.svg') }}" height="16">
+                                        <a style="color: #fff;" href="{{$ebusinesscard->website }}"
+                                           target="_blank"><span>{{ $ebusinesscard->website }}</span></a><br/>
+                                    </div>
+                                @endif
+                                @if(isset($ebusinesscard->skype_name) && $ebusinesscard->skype_name!='')
+                                    <div class="email-icon">
+                                        <img class="icon" src="{{ asset('images/icon/skype.svg') }}" height="16">
+                                        <span>{{ $ebusinesscard->skype_name }}</span><br/>
+                                    </div>
+                                @endif
+                                @if(isset($ebusinesscard->organisation) && $ebusinesscard->organisation!='')
+                                    <div class="email-icon">
+                                        <img class="icon" src="{{ asset('images/icon/gift.svg') }}" height="16">
+                                        <span>{{ $ebusinesscard->organisation }}</span><br/>
+                                    </div>
+                                @endif
+                                @if(isset($ebusinesscard->about) && $ebusinesscard->about!='')
+                                    <div class="email-icon">
+                                        <img class="icon" src="{{ asset('images/icon/info.svg') }}"
+                                             height="16">
+                                        <span>{{ $ebusinesscard->about }}</span>
+                                    </div>
+                                @endif
+                            </div>
+                        </td>
+                    </tr>
+                </table>
 
-                                        </div>
-                                    @endif
-                                    @if(isset($ebusinesscard->organisation) && $ebusinesscard->organisation!='')
-                                        <div class="email-icon">
-                                            <img class="icon" src="{{ asset('images/icon/gift.svg') }}" height="16">
-                                            <span>{{ $ebusinesscard->organisation }}</span><br/>
-                                        </div>
-                                    @endif
-                                    @if(isset($ebusinesscard->about) && $ebusinesscard->about!='')
-                                        <div class="email-icon">
-                                            </br> <img class="icon" src="{{ asset('images/icon/info.svg') }}"
-                                                       height="16">
-                                            <span>{{ $ebusinesscard->about }}</span>
-                                        </div>
-                                    @endif
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
 
+                <div style="clear: both;"></div>
 
-                    <div style="clear: both;"></div>
-                    <div class="btn-group">
-                        <ul class="dropdown-menu" role="menu">
-                            @if(isset($ebusinesscard->twitter) && $ebusinesscard->twitter!='')
-                                <li><a href="{{$ebusinesscard->twitter }}" target="_blank">
-                                        <img src="{{ asset('images/social/twitter.svg') }}" width="32" height="32"
-                                                title="Twitter" data-alt-src="{{ asset('images/social/twitter.png') }}"></a>
-                                </li>
-                            @endif
-                            @if(isset($ebusinesscard->facebook) && $ebusinesscard->facebook!='')
-                                <li><a href="{{$ebusinesscard->facebook }}"
-                                       target="_blank"><img
-                                                src="{{ asset('images/social/facebook.svg') }}" width="32" height="32"
-                                                title="Facebook"
-                                                data-alt-src="{{ asset('images/social/facebook.png') }}"></a></li>
+                <div class="btn-group">
+                    <ul>
+                        @if(isset($ebusinesscard->twitter) && $ebusinesscard->twitter!='')
+                            <li>
+                                <a href="{{$ebusinesscard->twitter }}" target="_blank">
+                                    <img style="background: #41b7e6; border-radius: 5px;"
+                                         src="{{ asset('images/social/twitter.svg') }}" width="32" height="32"
+                                         title="Twitter" data-alt-src="{{ asset('images/social/twitter.svg') }}"></a>
+                            </li>
+                        @endif
+                        @if(isset($ebusinesscard->facebook) && $ebusinesscard->facebook!='')
+                            <li>
+                                <a href="{{$ebusinesscard->facebook }}"
+                                   target="_blank"><img style="background: #3c5b9f; border-radius: 5px;"
+                                                        src="{{ asset('images/social/facebook.svg') }}" width="32"
+                                                        height="32"
+                                                        title="Facebook"
+                                                        data-alt-src="{{ asset('images/social/facebook.svg') }}"></a>
+                            </li>
 
-                            @endif
-                            @if(isset($ebusinesscard->instagram) && $ebusinesscard->instagram!='')
-                                <li><a href="{{$ebusinesscard->instagram }}"
-                                       target="_blank"><img
-                                                src="{{ asset('images/social/instagram.svg') }}" width="32" height="32"
-                                                title="Instagram"
-                                                data-alt-src="{{ asset('images/social/instagram.png') }}"></a>
-                                </li>
+                        @endif
+                        @if(isset($ebusinesscard->instagram) && $ebusinesscard->instagram!='')
+                            <li>
+                                <a href="{{$ebusinesscard->instagram }}"
+                                   target="_blank"><img style="background: #db4380; border-radius: 5px;"
+                                                        src="{{ asset('images/social/instagram.svg') }}" width="32"
+                                                        height="32"
+                                                        title="Instagram"
+                                                        data-alt-src="{{ asset('images/social/instagram.svg') }}"></a>
+                            </li>
 
-                            @endif
-                            @if(isset($ebusinesscard->whatsapp) && $ebusinesscard->whatsapp!='')
-                                <li><a href="{{$ebusinesscard->whatsapp }}"
-                                       target="_blank"><img
-                                                src="{{ asset('images/social/whats-app.svg') }}" width="32" height="32"
-                                                title="WhatsApp"
-                                                data-alt-src="{{ asset('images/social/whats-app.png') }}"></a>
-                                </li>
+                        @endif
+                        @if(isset($ebusinesscard->whatsapp) && $ebusinesscard->whatsapp!='')
+                            <li>
+                                <a href="{{$ebusinesscard->whatsapp }}"
+                                   target="_blank"><img style="background: #44cf42; border-radius: 5px;"
+                                                        src="{{ asset('images/social/whats-app.svg') }}" width="32"
+                                                        height="32"
+                                                        title="WhatsApp"
+                                                        data-alt-src="{{ asset('images/social/whats-app.svg') }}"></a>
+                            </li>
 
-                            @endif
-                            @if(isset($ebusinesscard->meetup) && $ebusinesscard->meetup!='')
-                                <li><a href="{{$ebusinesscard->meetup }}"
-                                       target="_blank"><img
-                                                src="{{ asset('images/social/meetup.svg') }}" width="32" height="32"
-                                                title="Meetup"
-                                                data-alt-src="{{ asset('images/social/meetup.png') }}"></a>
-                                </li>
+                        @endif
+                        @if(isset($ebusinesscard->meetup) && $ebusinesscard->meetup!='')
+                            <li>
+                                <a href="{{$ebusinesscard->meetup }}" target="_blank"><img
+                                            src="{{ asset('images/social/meetup.svg') }}" width="32" height="32"
+                                            title="Meetup" data-alt-src="{{ asset('images/social/meetup.svg') }}"></a>
+                            </li>
 
-                            @endif
-                            @if(isset($ebusinesscard->snapchat) && $ebusinesscard->snapchat!='')
-                                <li><a href="{{$ebusinesscard->snapchat }}"
-                                       target="_blank"><img
-                                                src="{{ asset('images/social/snapchat.svg') }}" width="32" height="32"
-                                                title="Snapchat"
-                                                data-alt-src="{{ asset('images/social/snapchat.png') }}"></a></li>
+                        @endif
+                        @if(isset($ebusinesscard->snapchat) && $ebusinesscard->snapchat!='')
+                            <li><a href="{{$ebusinesscard->snapchat }}"
+                                   target="_blank"><img src="{{ asset('images/social/snapchat.svg') }}" width="32"
+                                                        height="32"
+                                                        title="Snapchat"
+                                                        data-alt-src="{{ asset('images/social/snapchat.svg') }}"></a>
+                            </li>
 
-                            @endif
-                            @if(isset($ebusinesscard->google) && $ebusinesscard->google!='')
-                                <li><a  href="{{$ebusinesscard->google }}"
-                                       target="_blank"><img
-                                                src="{{ asset('images/social/google-plus.svg') }}" width="32"
-                                                height="32"
-                                                title="Google+"
-                                                data-alt-src="{{ asset('images/social/google-plus.png') }}"></a>
-                                </li>
+                        @endif
+                        @if(isset($ebusinesscard->google) && $ebusinesscard->google!='')
+                            <li>
+                                <a href="{{$ebusinesscard->google }}" target="_blank"><img
+                                            style="background: #cd4420; border-radius: 5px;"
+                                            src="{{ asset('images/social/google-plus.svg') }}" width="32" height="32"
+                                            title="Google+" data-alt-src="{{ asset('images/social/google-plus.svg') }}"></a>
+                            </li>
 
-                            @endif
-                            @if(isset($ebusinesscard->linkedin) && $ebusinesscard->linkedin!='')
-                                <li><a href="{{$ebusinesscard->linkedin }}"
-                                       target="_blank"><img
-                                                src="{{ asset('images/social/linked-in.svg') }}" width="32" height="32"
-                                                title="LinkedIn"
-                                                data-alt-src="{{ asset('images/social/linked-in.png') }}"></a>
-                                </li>
+                        @endif
+                        @if(isset($ebusinesscard->linkedin) && $ebusinesscard->linkedin!='')
+                            <li>
+                                <a href="{{$ebusinesscard->linkedin }}" target="_blank"><img
+                                            style="background: #2c7dbf; border-radius: 5px;"
+                                            src="{{ asset('images/social/linked-in.svg') }}" width="32" height="32"
+                                            title="LinkedIn" data-alt-src="{{ asset('images/social/linked-in.svg') }}"></a>
+                            </li>
 
-                            @endif
-                            @if(isset($ebusinesscard->foursquare) && $ebusinesscard->foursquare!='')
-                                <li><a  href="{{$ebusinesscard->foursquare }}"
-                                       target="_blank"><img
-                                                src="{{ asset('images/social/foursquare.svg') }}" width="32" height="32"
-                                                title="Foursquare"
-                                                data-alt-src="{{ asset('images/social/foursquare.png') }}"></a></li>
+                        @endif
+                        @if(isset($ebusinesscard->foursquare) && $ebusinesscard->foursquare!='')
+                            <li>
+                                <a href="{{$ebusinesscard->foursquare }}" target="_blank"><img
+                                            style="background: #f44877; border-radius: 5px;"
+                                            src="{{ asset('images/social/foursquare.svg') }}" width="32" height="32"
+                                            title="Foursquare"
+                                            data-alt-src="{{ asset('images/social/foursquare.svg') }}"></a>
+                            </li>
 
-                            @endif
-                            @if(isset($ebusinesscard->wordpress) && $ebusinesscard->wordpress!='')
-                                <li><a href="{{$ebusinesscard->wordpress }}"
-                                       target="_blank"><img
-                                                src="{{ asset('images/social/wordpress.svg') }}" width="32" height="32"
-                                                title="Blog" data-alt-src="{{ asset('images/social/wordpress.png') }}"></a>
-                                </li>
+                        @endif
+                        @if(isset($ebusinesscard->blog) && $ebusinesscard->blog!='')
+                            <li>
+                                <a href="{{$ebusinesscard->blog }}" target="_blank"><img
+                                            src="{{ asset('images/social/wordpress.png') }}" width="32" height="32"
+                                            title="Blog" data-alt-src="{{ asset('images/social/wordpress.png') }}"></a>
+                            </li>
 
-                            @endif
-                            @if(isset($ebusinesscard->youtube) && $ebusinesscard->youtube!='')
-                                <li><a  href="{{$ebusinesscard->youtube }}"
-                                       target="_blank"><img
-                                                src="{{ asset('images/social/youtube.svg') }}" width="32" height="32"
-                                                title="YouTube" data-alt-src="{{ asset('images/social/youtube.png') }}"></a>
-                                </li>
+                        @endif
 
-                            @endif
-                            @if(isset($ebusinesscard->pinterest) && $ebusinesscard->pinterest!='')
-                                <li><a href="{{$ebusinesscard->pinterest }}"
-                                       target="_blank"><img
-                                                src="{{ asset('images/social/pinterest.svg') }}" width="32" height="32"
-                                                title="Pinterest"
-                                                data-alt-src="{{ asset('images/social/pinterest.png') }}"></a>
-                                </li>
-                            @endif
-                        </ul>
-                    </div>
+                        @if(isset($ebusinesscard->youtube) && $ebusinesscard->youtube!='')
+                            <li>
+                                <a href="{{$ebusinesscard->youtube }}" target="_blank"><img
+                                            src="{{ asset('images/social/youtube.png') }}" width="32" height="32"
+                                            title="YouTube" data-alt-src="{{ asset('images/social/youtube.png') }}"></a>
+                            </li>
+
+                        @endif
+                        @if(isset($ebusinesscard->pinterest) && $ebusinesscard->pinterest!='')
+                            <li style="margin-right: 0;">
+                                <a href="{{$ebusinesscard->pinterest }}" target="_blank"><img
+                                            style="background: #d82f22; border-radius: 5px;"
+                                            src="{{ asset('images/social/pinterest.svg') }}" width="32" height="32"
+                                            title="Pinterest" data-alt-src="{{ asset('images/social/pinterest.svg') }}"></a>
+                            </li>
+                        @endif
+                    </ul>
+
                 </div>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
 

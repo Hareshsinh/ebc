@@ -140,7 +140,6 @@ class EBusinessCardRepository extends BaseRepository
                 }
                 $input['background'] = $request->background;
             }
-
             if ($ebusinesscard->update($input)) {
                 DB::commit();
                 return true;

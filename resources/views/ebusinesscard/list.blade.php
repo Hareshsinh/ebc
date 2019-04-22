@@ -36,6 +36,7 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Pin</th>
+                            <th>PDF view</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -48,9 +49,13 @@
                                 <td>{{ $user->phone }}</td>
                                 <td>{{ $user->zipcode }}</td>
                                 <td>
+                                    <a href="/generate-pdf/{{ $user->slug }}" class="btn btn-primary"><i class="fa fa-file"></i></a>&nbsp;&nbsp;
+                                </td>
+                                <td>
                                     <div style="display: flex;">
                                         <a href="/ebusinesscard/{{ $user->slug }}" class="btn btn-primary"><i
-                                                    class="fa fa-eye"></i></a>&nbsp;
+                                                    class="fa fa-eye"></i></a>
+
                                         <a href="/ebusinesscard/{{ $user->slug }}/edit" class="btn btn-primary"><i
                                                     class="fa fa-edit"></i></a>&nbsp;
                                         <form class="delete" action="/ebusinesscard/{{ $user->slug }}"
@@ -65,6 +70,7 @@
                                         <i class="fa fa-trash"></i>
                                     </div>
                                 </td>
+
                             </tr>
                         @endforeach
                         </tbody>
@@ -77,3 +83,4 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </body>
 </html>
+
