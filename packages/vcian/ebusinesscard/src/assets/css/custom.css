@@ -164,6 +164,7 @@ body {
     border-radius: 10px;
     margin-bottom: 10px;
     display: table;
+    position: relative;
 }
 
 .right-card {
@@ -199,6 +200,10 @@ body {
     border: none;
     border-radius: 0;
     background: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
 }
 
 .top-bg {
@@ -236,5 +241,11 @@ body {
     .person-photo {
         width: 100%;
         height: auto;
+    }
+    .right-card {
+        width: 100%;
+    }
+    .img-thumbnail {
+        position: relative;
     }
 }

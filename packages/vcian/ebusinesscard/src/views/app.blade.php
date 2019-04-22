@@ -93,7 +93,7 @@
                                                 src="{{ asset('images/social') }}/foursquare.svg" width="32" height="32"
                                                 title="Foursquare"
                                                 data-alt-src="{{ asset('ebcuploads/social') }}/foursquare.png"></a></li>
-                                <li><a href="#" class="wordpress social" href="" target="_blank"><img
+                                <li><a href="#" class="blog social" href="" target="_blank"><img
                                                 src="{{ asset('images/social') }}/wordpress.svg" width="32" height="32"
                                                 title="Blog"
                                                 data-alt-src="{{ asset('ebcuploads/social') }}/wordpress.png"></a></li>
@@ -124,7 +124,7 @@
                         <div class="skype_name-icon"><i class="glyphicon glyphicon-comment" data-icon="skype_name"
                                                         title="skype name" data-toggle="tooltip"></i><span
                                     id='skype_name'></span><br/></div>
-                        <div class="designation-icon"><i class="glyphicon glyphicon-gift organisation-icon"
+                        <div class="organisation-icon"><i class="glyphicon glyphicon-gift organisation-icon"
                                                          title="organisation" data-toggle="tooltip"></i><span
                                     id='organisation'></span></div>
                         <div class="about-icon"><i class="glyphicon glyphicon-info-sign" data-icon="about" title="about"
