@@ -31,6 +31,7 @@ class EbusinessCardServiceProvider extends ServiceProvider
         $this->app->make(EBusinessCardController::class);
         $this->publishes([
             __DIR__.'/views' => resource_path('views/ebusinesscard/'),
+            __DIR__.'/assets' => public_path('ebusinesscard/'),
         ]);
     }
 

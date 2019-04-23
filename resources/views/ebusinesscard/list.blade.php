@@ -54,7 +54,7 @@
                                 <td>
                                     <div style="display: flex;">
                                         <a href="/ebusinesscard/{{ $user->slug }}" class="btn btn-primary"><i
-                                                    class="fa fa-eye"></i></a>
+                                                    class="fa fa-eye"></i></a>&nbsp;
 
                                         <a href="/ebusinesscard/{{ $user->slug }}/edit" class="btn btn-primary"><i
                                                     class="fa fa-edit"></i></a>&nbsp;
