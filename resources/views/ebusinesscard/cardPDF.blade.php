@@ -105,7 +105,7 @@
         }
 
         .leave-top-space {
-            width: 180px;
+            width: 160px;
             padding-left: 10px;
         }
 
@@ -129,10 +129,10 @@
             background: #fff;
             overflow: hidden;
             border-radius: 10px;
-            display: table;
+            display: block;
             position: relative;
             margin: 10px 0 10px 0px;
-            border: 2px solid #fff;
+            border: 5px solid #fff;
         }
 
         .right-card {
@@ -143,9 +143,11 @@
         }
 
         .main-img {
-            display: table-cell;
-            vertical-align: middle;
-            text-align: center;
+            height: inherit;
+            width: auto;
+            /*display: table-cell;*/
+            /*vertical-align: middle;*/
+            /*text-align: center;*/
         }
 
         .well-card h1 {
@@ -169,8 +171,11 @@
         }
 
         .card {
-            min-height: 228px;
-            background: url("{{ $ebusinesscard->backgroundPath }}") no-repeat left top;
+            min-height: 255px;
+            width: 535px;
+            overflow: hidden;
+            position: relative
+            {{--background: url("{{ $ebusinesscard->backgroundPath }}") no-repeat left top;--}}
 
         }
 
@@ -193,6 +198,8 @@
             border-radius: 0;
             background: none;
             height: auto;
+            width: 140px;
+            height: 140px;
             text-align: center;
         }
 
@@ -239,6 +246,7 @@
     <div class="well-card">
         <div class="well well-sm">
             <div class="background img-responsive card">
+                <img src="{{ $ebusinesscard->backgroundPath }}" style="width: 100%;position: absolute;">
                 <div class="black-bg"></div>
                 <table style="position: relative; z-index: 9;">
                     <tr>

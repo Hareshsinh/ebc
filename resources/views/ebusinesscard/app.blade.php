@@ -121,9 +121,10 @@
                         <div class="website-icon"><i class="glyphicon glyphicon-globe" data-icon="website"
                                                      title="website" data-toggle="tooltip"></i><a class="website"><span
                                         id="website"></span> </a><br/></div>
-                        <div class="skype_name-icon"><i class="glyphicon glyphicon-comment" data-icon="skype_name"
-                                                        title="skype name" data-toggle="tooltip"></i><span
-                                    id='skype_name'></span><br/></div>
+                        <div class="skype_name-icon" style="padding-bottom: 6px">
+                            <i class="fa fa-skype"  data-icon="skype_name"
+                               title="skype name" data-toggle="tooltip"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span id='skype_name'></span><br/></div>
                         <div class="organisation-icon"><i class="glyphicon glyphicon-gift organisation-icon"
                                                          title="organisation" data-toggle="tooltip"></i><span
                                     id='organisation'></span></div>
@@ -334,14 +335,14 @@
     <script>
         $('.background').css({
             'background-image': 'url({{ asset('ebusinesscards/background/'.$ebusinesscard->background) }})',
-            'background-size': '100% 100%'
+            'background-size': '100%'
         });
     </script>
 @else
     <script>
         $('.background').css({
             'background-image': 'url({{ asset('ebusinesscards/social/background.jpeg') }})',
-            'background-size': '100% 100%'
+            'background-size': '100%'
         });
     </script>
 @endif
