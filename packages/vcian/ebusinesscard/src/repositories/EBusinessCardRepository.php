@@ -72,7 +72,7 @@ class EBusinessCardRepository extends BaseRepository
             $background = ($request->file('background')) ?? null;
             if ($profile) {
                 $request->profile = time() . '.' . $profile->getClientOriginalExtension();
-                if (!File::exists($destinationPath = public_path('/ebcuploads/profile'))) {
+                if (!File::exists($destinationPath = public_path('/ebusinesscards/profile'))) {
                     File::makeDirectory($destinationPath, 0777, true, true);
                 }
                 $profile->move($destinationPath, $request->profile);
@@ -80,7 +80,7 @@ class EBusinessCardRepository extends BaseRepository
 
             if ($background) {
                 $request->background = time() . '.' . $background->getClientOriginalExtension();
-                if (!File::exists($destinationPath = public_path('/ebcuploads/background'))) {
+                if (!File::exists($destinationPath = public_path('/ebusinesscards/background'))) {
                     File::makeDirectory($destinationPath, 0777, true, true);
                 }
                 $background->move($destinationPath, $request->background);
@@ -117,7 +117,7 @@ class EBusinessCardRepository extends BaseRepository
             $background = ($request->file('background')) ?? null;
             if ($profile) {
                 $request->profile = time() . '.' . $profile->getClientOriginalExtension();
-                if (!\File::exists($destinationPath = public_path('/ebcuploads/profile'))) {
+                if (!\File::exists($destinationPath = public_path('/ebusinesscards/profile'))) {
                     \File::makeDirectory($destinationPath, 0777, true, true);
                 }
                 if ($profile->move($destinationPath, $request->profile)) {
@@ -130,7 +130,7 @@ class EBusinessCardRepository extends BaseRepository
 
             if ($background) {
                 $request->background = time() . '.' . $background->getClientOriginalExtension();
-                if (!File::exists($destinationPath = public_path('/ebcuploads/background'))) {
+                if (!File::exists($destinationPath = public_path('/ebusinesscards/background'))) {
                     File::makeDirectory($destinationPath, 0777, true, true);
                 }
                 if ($background->move($destinationPath, $request->background)) {
@@ -163,11 +163,11 @@ class EBusinessCardRepository extends BaseRepository
         try {
             DB::beginTransaction();
             $ebusinesscard = $this->model->where('slug', $slug)->first();
-            if (File::exists(public_path('/ebcuploads/profile/' . $ebusinesscard->profile))) {
-                File::delete(public_path('/ebcuploads/profile/' . $ebusinesscard->profile));
+            if (File::exists(public_path('/ebusinesscards/profile/' . $ebusinesscard->profile))) {
+                File::delete(public_path('/ebusinesscards/profile/' . $ebusinesscard->profile));
             }
-            if (File::exists(public_path('/ebcuploads/background/' . $ebusinesscard->background))) {
-                File::delete(public_path('/ebcuploads/background/' . $ebusinesscard->background));
+            if (File::exists(public_path('/ebusinesscards/background/' . $ebusinesscard->background))) {
+                File::delete(public_path('/ebusinesscards/background/' . $ebusinesscard->background));
             }
 
             if ($ebusinesscard->delete()) {

@@ -23,13 +23,13 @@ input.error {
 }
 
 label.error {
-    background: url('../images/social/unchecked.gif') no-repeat;
+    background: url('../social/unchecked.gif') no-repeat;
     padding-left: 16px;
     margin-left: .3em
 }
 
 label.valid {
-    background: url('../images/social/checked.gif') no-repeat;
+    background: url('../social/checked.gif') no-repeat;
     display: block;
     width: 16px;
     height: 16px

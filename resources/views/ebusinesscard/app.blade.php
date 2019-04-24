@@ -2,15 +2,15 @@
 <html>
 <head>
     <title>E Business Card</title>
-    <link type="text/css" rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <script type="text/javascript" src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/jquery.validate.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/additional-methods.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <link type="text/css" rel="stylesheet" href="{{ asset('ebusinesscards/css/bootstrap.min.css') }}">
+    <script type="text/javascript" src="{{ asset('ebusinesscards/js/jquery-3.1.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('ebusinesscards/js/jquery.validate.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('ebusinesscards/js/additional-methods.min.js') }}"></script>
+    <script src="{{ asset('ebusinesscards/js/bootstrap.min.js') }}"></script>
     <!------ Include the above in your HEAD tag ---------->
-    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('js/jquery.validate.min.js') }}" rel="stylesheet">
-    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('ebusinesscards/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('ebusinesscards/js/jquery.validate.min.js') }}" rel="stylesheet">
+    <link href="{{ asset('ebusinesscards/css/custom.css') }}" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -30,14 +30,14 @@
                             <div class="person-photo">
                                 <div class="main-img"><img class="profile img-thumbnail" title="profile image"
                                                            data-toggle="tooltip"
-                                                           src="{{ asset('ebcuploads/profile/'.$ebusinesscard->profile) }}"
+                                                           src="{{ asset('ebusinesscards/profile/'.$ebusinesscard->profile) }}"
                                                            height="200" alt="Avatar"></div>
                             </div>
                         @else
                             <div class="person-photo">
                                 <div class="main-img"><img class="profile img-thumbnail" title="profile image"
                                                            data-toggle="tooltip"
-                                                           src="{{ asset('images/social/avatar.png') }}" height="200"
+                                                           src="{{ asset('ebusinesscards/social/avatar.png') }}" height="200"
                                                            alt="Avatar"></div>
                             </div>
                         @endif
@@ -57,54 +57,54 @@
                             </button>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="#" class="twitter social" href="" target="_blank"><img
-                                                src="{{ asset('images/social') }}/twitter.svg" width="32" height="32"
+                                                src="{{ asset('ebusinesscards/social/twitter.svg') }}" width="32" height="32"
                                                 title="Twitter"
-                                                data-alt-src="{{ asset('ebcuploads/social') }}/twitter.png"></a></li>
+                                                data-alt-src="{{ asset('ebusinesscards/social/twitter.png') }}"></a></li>
                                 <li><a href="#" class="facebook social" href="" target="_blank"><img
-                                                src="{{ asset('images/social') }}/facebook.svg" width="32" height="32"
+                                                src="{{ asset('ebusinesscards/social/facebook.svg') }}" width="32" height="32"
                                                 title="Facebook"
-                                                data-alt-src="{{ asset('ebcuploads/social') }}/facebook.png"></a></li>
+                                                data-alt-src="{{ asset('ebusinesscards/social/facebook.png') }}"></a></li>
                                 <li><a href="#" class="instagram social" href="" target="_blank"><img
-                                                src="{{ asset('images/social') }}/instagram.svg" width="32" height="32"
+                                                src="{{ asset('ebusinesscards/social/instagram.svg') }}" width="32" height="32"
                                                 title="Instagram"
-                                                data-alt-src="{{ asset('ebcuploads/social') }}/instagram.png"></a></li>
+                                                data-alt-src="{{ asset('ebusinesscards/social/instagram.png') }}"></a></li>
                                 <li><a href="#" class="whatsapp social" href="" target="_blank"><img
-                                                src="{{ asset('images/social') }}/whats-app.svg" width="32" height="32"
+                                                src="{{ asset('ebusinesscards/social/whats-app.svg') }}" width="32" height="32"
                                                 title="WhatsApp"
-                                                data-alt-src="{{ asset('ebcuploads/social') }}/whats-app.png"></a></li>
+                                                data-alt-src="{{ asset('ebusinesscards/social/whats-app.png') }}"></a></li>
                                 <li><a href="#" class="meetup social" href="" target="_blank"><img
-                                                src="{{ asset('images/social') }}/meetup.svg" width="32" height="32"
+                                                src="{{ asset('ebusinesscards/social/meetup.svg') }}" width="32" height="32"
                                                 title="Meetup"
-                                                data-alt-src="{{ asset('ebcuploads/social') }}/meetup.png"></a></li>
+                                                data-alt-src="{{ asset('ebusinesscards/social/meetup.png') }}"></a></li>
                                 <li><a href="#" class="snapchat social" href="" target="_blank"><img
-                                                src="{{ asset('images/social') }}/snapchat.svg" width="32" height="32"
+                                                src="{{ asset('ebusinesscards/social/snapchat.svg') }}" width="32" height="32"
                                                 title="Snapchat"
-                                                data-alt-src="{{ asset('ebcuploads/social') }}/snapchat.png"></a></li>
+                                                data-alt-src="{{ asset('ebusinesscards/social/snapchat.png') }}"></a></li>
                                 <li><a href="#" class="google social" href="" target="_blank"><img
-                                                src="{{ asset('images/social') }}/google-plus.svg" width="32"
+                                                src="{{ asset('ebusinesscards/social/google-plus.svg') }}" width="32"
                                                 height="32" title="Google+"
-                                                data-alt-src="{{ asset('ebcuploads/social') }}/google-plus.png"></a>
+                                                data-alt-src="{{ asset('ebusinesscards/social/google-plus.png') }}"></a>
                                 </li>
                                 <li><a href="#" class="linkedin social" href="" target="_blank"><img
-                                                src="{{ asset('images/social') }}/linked-in.svg" width="32" height="32"
+                                                src="{{ asset('ebusinesscards/social/linked-in.svg') }}" width="32" height="32"
                                                 title="LinkedIn"
-                                                data-alt-src="{{ asset('ebcuploads/social') }}/linked-in.png"></a></li>
+                                                data-alt-src="{{ asset('ebusinesscards/social/linked-in.png') }}"></a></li>
                                 <li><a href="#" class="foursquare social" href="" target="_blank"><img
-                                                src="{{ asset('images/social') }}/foursquare.svg" width="32" height="32"
+                                                src="{{ asset('ebusinesscards/social/foursquare.svg') }}" width="32" height="32"
                                                 title="Foursquare"
-                                                data-alt-src="{{ asset('ebcuploads/social') }}/foursquare.png"></a></li>
+                                                data-alt-src="{{ asset('ebusinesscards/social/foursquare.png') }}"></a></li>
                                 <li><a href="#" class="blog social" href="" target="_blank"><img
-                                                src="{{ asset('images/social') }}/wordpress.svg" width="32" height="32"
+                                                src="{{ asset('ebusinesscards/social/wordpress.svg') }}" width="32" height="32"
                                                 title="Blog"
-                                                data-alt-src="{{ asset('ebcuploads/social') }}/wordpress.png"></a></li>
+                                                data-alt-src="{{ asset('ebusinesscards/social/wordpress.png') }}"></a></li>
                                 <li><a href="#" class="youtube social" href="" target="_blank"><img
-                                                src="{{ asset('images/social') }}/youtube.svg" width="32" height="32"
+                                                src="{{ asset('ebusinesscards/social/youtube.svg') }}" width="32" height="32"
                                                 title="YouTube"
-                                                data-alt-src="{{ asset('ebcuploads/social') }}/youtube.png"></a></li>
+                                                data-alt-src="{{ asset('ebusinesscards/social/youtube.png') }}"></a></li>
                                 <li><a href="#" class="pinterest social" href="" target="_blank"><img
-                                                src="{{ asset('images/social') }}/pinterest.svg" width="32" height="32"
+                                                src="{{ asset('ebusinesscards/social/pinterest.svg') }}" width="32" height="32"
                                                 title="Pinterest"
-                                                data-alt-src="{{ asset('ebcuploads/social') }}/pinterest.png"></a></li>
+                                                data-alt-src="{{ asset('ebusinesscards/social/pinterest.png') }}"></a></li>
                             </ul>
                         </div>
                         <h4 id='name'></h4>
@@ -312,7 +312,7 @@
         </div>
     @endif
 </div>
-<script src="{{ asset('js/custom.js') }}"></script>
+<script src="{{ asset('ebusinesscards/js/custom.js') }}"></script>
 
 @if(isset($ebusinesscard) && $ebusinesscard!='')
     @foreach(array_keys($ebusinesscard->toArray()) as $value)
@@ -333,14 +333,14 @@
 @if(isset($ebusinesscard) && (isset($ebusinesscard->background) && $ebusinesscard->background!=''))
     <script>
         $('.background').css({
-            'background-image': 'url({{ asset('ebcuploads/background/'.$ebusinesscard->background) }})',
+            'background-image': 'url({{ asset('ebusinesscards/background/'.$ebusinesscard->background) }})',
             'background-size': '100% 100%'
         });
     </script>
 @else
     <script>
         $('.background').css({
-            'background-image': 'url({{ asset('images/social/background.jpeg') }})',
+            'background-image': 'url({{ asset('ebusinesscards/social/background.jpeg') }})',
             'background-size': '100% 100%'
         });
     </script>

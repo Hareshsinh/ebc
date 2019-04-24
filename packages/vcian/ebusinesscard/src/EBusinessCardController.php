@@ -5,6 +5,7 @@ namespace Vcian\EbusinessCard;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use Log;
 use Vcian\EbusinessCard\repositories\EBusinessCardRepository;
 
@@ -148,10 +149,11 @@ class EBusinessCardController extends Controller
     {
         try {
             $ebusinesscard = EBusinessCard::where('slug', $slug)->first();
+            $ebusinesscard->backgroundPath =  asset("ebusinesscards/social/background.jpeg");
             if($ebusinesscard->background!=''){
-                $ebusinesscard->backgroundPath =     asset('ebcuploads/background/'.$ebusinesscard->background);
-            } else {
-                $ebusinesscard->backgroundPath =  asset("images/social/background.jpeg");
+                if (File::exists(public_path('/ebusinesscards/background/' . $ebusinesscard->background))) {
+                    $ebusinesscard->backgroundPath = asset('ebusinesscards/background/' . $ebusinesscard->background);
+                }
             }
             $data['ebusinesscard'] = $ebusinesscard;
 //            return view('ebusinesscard.cardPDF', $data);

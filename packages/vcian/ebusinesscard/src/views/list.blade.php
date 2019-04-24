@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Ecard Infomration</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link type="text/css" rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ asset('ebusinesscards/css/bootstrap.min.css') }}">
     <!------ Include the above in your HEAD tag ---------->
-    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('ebusinesscards/css/font-awesome.min.css') }}" rel="stylesheet">
 
 </head>
 <body>
@@ -80,7 +80,7 @@
             </div>
         </div>
     </div>
-    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('ebusinesscards/css/custom.css') }}" rel="stylesheet">
 </body>
 </html>
 
